@@ -5,15 +5,25 @@
  */
 package models;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Iván
  */
-public class Calculator {
+public class Calculator implements Serializable{
     int valor1;
     int valor2;
     int resultado;
     char signo;
+
+    @Override
+    public String toString() {
+        return "La operacion tiene como primer valor: "+valor1
+                        +" como signo"+signo
+                        +" como segundo valor: "+valor2
+                        +" y como resultado"+resultado;
+    }
 
     public int getValor1() {
         return valor1;

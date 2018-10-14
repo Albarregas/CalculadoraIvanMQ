@@ -10,7 +10,7 @@ package models;
  * @author Iván
  */
 public class Sumador {
-    private int sumar(int operando1,int operando2){
+    public int sumar(int operando1,int operando2){
         return operando1+operando2;
     }
 }

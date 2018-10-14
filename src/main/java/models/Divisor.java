@@ -10,7 +10,7 @@ package models;
  * @author Iván
  */
 public class Divisor {
-    private int dividir(int operando1,int operando2){
+    public int dividir(int operando1,int operando2){
         return operando1/operando2;
     }
 }

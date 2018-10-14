@@ -12,13 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.*;
 
 /**
  *
  * @author Iván
  */
 @WebServlet(name = "controlador", urlPatterns = {"/controlador"})
-public class controlador extends HttpServlet {
+public class Controlador extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,16 +34,32 @@ public class controlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet controlador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet controlador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            Calculator calculator = new Calculator();
+            StringBuilder sb=new StringBuilder();
+            //request.getRequestDispatcher("path").forward(request, response); Te lleva a la ruta indicada
+            calculator.setValor1(Integer.parseInt(request.getParameter("Valor1")));
+            calculator.setValor2(Integer.parseInt(request.getParameter("Valor2")));
+
+            if (request.getParameter("Enviar").equals("Sumar")) {
+                Sumador suma = new Sumador();
+                calculator.setResultado(suma.sumar(calculator.getValor1(), calculator.getValor2()));
+                calculator.setSigno('+');
+            } else if (request.getParameter("Enviar").equals("Restar")) {
+                Restador resta = new Restador();
+                calculator.setResultado(resta.restar(calculator.getValor1(), calculator.getValor2()));
+                calculator.setSigno('-');
+            } else if (request.getParameter("Enviar").equals("Multiplicar")) {
+                Multiplicador multi = new Multiplicador();
+                calculator.setResultado(multi.multiplicar(calculator.getValor1(), calculator.getValor2()));
+                calculator.setSigno('*');
+            } else if (request.getParameter("Enviar").equals("Dividir")) {
+                Divisor divis = new Divisor();
+                calculator.setResultado(divis.dividir(calculator.getValor1(), calculator.getValor2()));
+                calculator.setSigno('/');
+            }
+            sb.append(calculator.toString());
+            request.getRequestDispatcher("./JSP/resultado.jsp").forward(request, response);
+
         }
     }
 
