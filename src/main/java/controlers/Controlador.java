@@ -18,7 +18,7 @@ import models.*;
  *
  * @author Iván
  */
-@WebServlet(name = "controlador", urlPatterns = {"/ctrl"})
+@WebServlet(name = "controlador", urlPatterns = {"/controlador"})
 public class Controlador extends HttpServlet {
 
     /**

@@ -12,9 +12,11 @@
         <title>Calculadora</title>
     </head>
     <body>
-        
-        <%@include file="/INC/cabecera.inc"%>
-        <form method="" action="/ctrl">
+        <div name="img" align="center" style="border-top: 5px black double;margin: 100px;margin-bottom: 0px">
+    <h1 align="center" >Calculadora</h1>
+    <img src="INC/calculadora.png"/>
+</div>
+        <form method="post" action="controlers/controlador">
             <div align="center" style="margin-top:10px ">
                 <label for="Valor1">Valor1: </label>
                 <input id="Valor1" type="number" name="Valor1" value="" placeholder="Valor 1"/>
