@@ -9,12 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Calculadora</title>
     </head>
     <body>
         
         <%@include file="/INC/cabecera.inc"%>
-        <form method="POST" action="/controlador">
+        <form method="" action="/ctrl">
             <div align="center" style="margin-top:10px ">
                 <label for="Valor1">Valor1: </label>
                 <input id="Valor1" type="number" name="Valor1" value="" placeholder="Valor 1"/>

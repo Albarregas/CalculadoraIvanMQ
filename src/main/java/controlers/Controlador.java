@@ -18,7 +18,7 @@ import models.*;
  *
  * @author Iván
  */
-@WebServlet(name = "controlador", urlPatterns = {"/controlador"})
+@WebServlet(name = "controlador", urlPatterns = {"/ctrl"})
 public class Controlador extends HttpServlet {
 
     /**
@@ -34,11 +34,15 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            String urlResultado=request.getContextPath()+"src/main/webapp/JSP/resultado.jsp";
+            String urlError=request.getContextPath()+"src/main/webapp/JSP/errores.jsp";
+            String clave="KEY";
             Calculator calculator = new Calculator();
-            StringBuilder sb=new StringBuilder();
             //request.getRequestDispatcher("path").forward(request, response); Te lleva a la ruta indicada
             calculator.setValor1(Integer.parseInt(request.getParameter("Valor1")));
             calculator.setValor2(Integer.parseInt(request.getParameter("Valor2")));
+            
 
             if (request.getParameter("Enviar").equals("Sumar")) {
                 Sumador suma = new Sumador();
@@ -53,12 +57,16 @@ public class Controlador extends HttpServlet {
                 calculator.setResultado(multi.multiplicar(calculator.getValor1(), calculator.getValor2()));
                 calculator.setSigno('*');
             } else if (request.getParameter("Enviar").equals("Dividir")) {
+                if (calculator.getValor2()!=0){
                 Divisor divis = new Divisor();
                 calculator.setResultado(divis.dividir(calculator.getValor1(), calculator.getValor2()));
                 calculator.setSigno('/');
+                }else{
+                    request.getRequestDispatcher(urlError).forward(request, response);
+                }
             }
-            sb.append(calculator.toString());
-            request.getRequestDispatcher("./JSP/resultado.jsp").forward(request, response);
+            request.getSession().setAttribute(clave,calculator.toString());
+            request.getRequestDispatcher(urlResultado).forward(request, response);
 
         }
     }
