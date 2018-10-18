@@ -20,9 +20,9 @@ public class Calculator implements Serializable{
     @Override
     public String toString() {
         return "La operacion tiene como primer valor: "+valor1
-                        +" como signo"+signo
+                        +" como signo:"+signo
                         +" como segundo valor: "+valor2
-                        +" y como resultado"+resultado;
+                        +" y como resultado:"+resultado;
     }
 
     public int getValor1() {

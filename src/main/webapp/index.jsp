@@ -16,7 +16,7 @@
     <h1 align="center" >Calculadora</h1>
     <img src="INC/calculadora.png"/>
 </div>
-        <form method="post" action="controlers/controlador">
+        <form method="post" action="controlador">
             <div align="center" style="margin-top:10px ">
                 <label for="Valor1">Valor1: </label>
                 <input id="Valor1" type="number" name="Valor1" value="" placeholder="Valor 1"/>

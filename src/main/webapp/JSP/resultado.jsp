@@ -13,16 +13,18 @@
     </head>
     <body>
         <%@include file="/INC/cabecera.inc"%>
-        <form method="POST" action="/controlador.java">
             <h1>
                 <%
-                    String clave="KEY";
-                    request.getSession().getAttribute(clave);
-                    %>
+                    String clave = "KEY";
+
+                %>
+                <%=request.getSession().getAttribute(clave)%>
             </h1>
 
+            <div align="center" style="border-bottom:  5px black double;margin: 100px;margin-top: 10px">
+                <a href="<%= request.getContextPath() %>">Volver</a>
+            </div>
 
-            <%@include file="/INC/pie.inc" %>
-        </form>
+
     </body>
 </html>

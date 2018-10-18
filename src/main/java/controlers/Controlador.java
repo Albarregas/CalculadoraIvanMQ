@@ -35,8 +35,8 @@ public class Controlador extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            String urlResultado=request.getContextPath()+"src/main/webapp/JSP/resultado.jsp";
-            String urlError=request.getContextPath()+"src/main/webapp/JSP/errores.jsp";
+            String urlResultado="/JSP/resultado.jsp";
+            String urlError="/JSP/errores.jsp";
             String clave="KEY";
             Calculator calculator = new Calculator();
             //request.getRequestDispatcher("path").forward(request, response); Te lleva a la ruta indicada
